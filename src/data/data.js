@@ -132,6 +132,13 @@ export const education = [
     institution: "Sri Lanka Institute of Information Technology (SLIIT)",
     dates: "2024 – 2028",
     current: true,
+    projects: [
+      { title: "BlackEagleLK – Movie Discovery & Streaming-Style Web App", github: "https://github.com/sadeepnimsara555-del/BlackEagleLK", liveUrl: "https://blackeaglelkmovie.vercel.app/" },
+      { title: "Web-Based Retail Hospital Store Management System", github: "https://github.com/IT24102990/Hospital-management" },
+      { title: "Staff Management System", github: "https://github.com/sadeepnimsara555-del/Staff-Management-" },
+      { title: "Heart Failure Prediction", github: "https://github.com/sadeepnimsara555-del/Heart-Failure-Prediction" },
+      { title: "Online Bakery Store Management System", github: "https://github.com/sadeepnimsara555-del/Online-Backery-Store" },
+    ],
   },
   {
     id: 2,
@@ -139,6 +146,7 @@ export const education = [
     institution: "P de S Kularathna College, Ambalangoda",
     dates: "2019 – 2021",
     current: false,
+    projects: [],
   },
   {
     id: 3,
@@ -146,6 +154,9 @@ export const education = [
     institution: "Future for Children College, Kosgoda",
     dates: "2007 – 2018",
     current: false,
+    projects: [
+      { title: "Home Automation System", github: "https://github.com/sadeepnimsara555-del/Auto-Mate-Home-System" },
+    ],
   },
 ];
 

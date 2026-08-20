@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { GraduationCap } from "lucide-react";
+import { GraduationCap, ExternalLink } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
 import { education } from "../data/data";
 
 export default function Education() {
@@ -58,7 +59,8 @@ export default function Education() {
 
                   {/* Card */}
                   <div className="glass-card rounded-2xl p-6">
-                    <div className="flex items-center gap-2 mb-2 flex-wrap md:justify-end">
+                    {/* Date + Current badge */}
+                    <div className={`flex items-center gap-2 mb-2 flex-wrap ${isLeft ? "md:justify-end" : ""}`}>
                       <span className="text-xs px-3 py-0.5 rounded-full bg-indigo-500/15 text-indigo-400 border border-indigo-500/20 font-medium">
                         {item.dates}
                       </span>
@@ -68,10 +70,42 @@ export default function Education() {
                         </span>
                       )}
                     </div>
+
                     <h3 className="font-heading font-semibold text-white text-sm leading-snug mb-1">
                       {item.degree}
                     </h3>
-                    <p className="text-slate-400 text-xs">{item.institution}</p>
+                    <p className="text-slate-400 text-xs mb-0">{item.institution}</p>
+
+                    {/* Projects built during this period */}
+                    {item.projects && item.projects.length > 0 && (
+                      <div className={`mt-4 pt-4 border-t border-white/5`}>
+                        <p className={`text-[10px] font-semibold tracking-widest uppercase text-slate-500 mb-2 ${isLeft ? "md:text-right" : ""}`}>
+                          Projects Built
+                        </p>
+                        <div className={`flex flex-wrap gap-1.5 ${isLeft ? "md:justify-end" : ""}`}>
+                          {item.projects.map((proj) => (
+                            <a
+                              key={proj.title}
+                              href={proj.liveUrl ?? proj.github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              title={proj.liveUrl ? "Live Demo" : "GitHub"}
+                              className="group/chip inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-[11px] font-medium
+                                bg-slate-800/60 border border-slate-700/50 text-slate-400
+                                hover:bg-indigo-500/15 hover:border-indigo-500/40 hover:text-indigo-300
+                                transition-all duration-200 cursor-none"
+                            >
+                              {proj.liveUrl ? (
+                                <ExternalLink size={10} className="shrink-0 text-indigo-400" />
+                              ) : (
+                                <FaGithub size={10} className="shrink-0 text-slate-500 group-hover/chip:text-indigo-400 transition-colors" />
+                              )}
+                              {proj.title}
+                            </a>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </motion.div>
               );
