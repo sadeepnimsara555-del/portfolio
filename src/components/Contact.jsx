@@ -6,15 +6,15 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { personalInfo } from "../data/data";
 
 // ============================================================
-//  📧 EmailJS Configuration
-//  1. Create an account at https://www.emailjs.com/
-//  2. Create a Service and get the Service ID → paste below
-//  3. Create an Email Template → paste the Template ID below
-//  4. Copy your Public Key from Account > API Keys → paste below
+//  📧 EmailJS Configuration — keys are read from .env
+//  Set these variables in your .env file:
+//    VITE_EMAILJS_SERVICE_ID=your_service_id
+//    VITE_EMAILJS_TEMPLATE_ID=your_template_id
+//    VITE_EMAILJS_PUBLIC_KEY=your_public_key
 // ============================================================
-const EMAILJS_SERVICE_ID  = "YOUR_SERVICE_ID";   // 👈 paste your Service ID here
-const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";  // 👈 paste your Template ID here
-const EMAILJS_PUBLIC_KEY  = "YOUR_PUBLIC_KEY";   // 👈 paste your Public Key here
+const EMAILJS_SERVICE_ID  = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 // Template variables expected by EmailJS:
 //   {{from_name}} — sender's name
@@ -37,6 +37,17 @@ export default function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Guard: warn clearly if env vars are not set
+    if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY ||
+        EMAILJS_SERVICE_ID === "YOUR_SERVICE_ID") {
+      console.error(
+        "EmailJS is not configured. Please fill in your VITE_EMAILJS_* values in the .env file."
+      );
+      setStatus("error");
+      return;
+    }
+
     setStatus("sending");
     try {
       await emailjs.sendForm(

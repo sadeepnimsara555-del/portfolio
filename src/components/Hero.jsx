@@ -110,9 +110,11 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.7, delay: 0.3 }}
-          className="mb-6 h-10 flex items-center justify-center"
+          className="mb-6 h-12 flex items-center justify-center"
         >
-          <RotatingText />
+          <span className="inline-flex items-center px-5 py-2 rounded-full border border-indigo-500/40 bg-indigo-500/10 backdrop-blur-md shadow-lg shadow-indigo-500/10">
+            <RotatingText />
+          </span>
         </motion.div>
 
         {/* Tagline */}

@@ -217,9 +217,10 @@ body {
   height: 8px;
   background: #6366f1;
   border-radius: 50%;
-  position: absolute;
+  position: fixed;
   transform: translate(-50%, -50%);
   transition: width 0.2s, height 0.2s, background 0.2s;
+  pointer-events: none;
 }
 
 .cursor-ring {
@@ -227,9 +228,10 @@ body {
   height: 36px;
   border: 1.5px solid rgba(99, 102, 241, 0.6);
   border-radius: 50%;
-  position: absolute;
+  position: fixed;
   transform: translate(-50%, -50%);
   transition: width 0.15s ease, height 0.15s ease, border-color 0.2s ease;
+  pointer-events: none;
 }
 
 /* =========================================

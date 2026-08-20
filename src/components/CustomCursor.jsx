@@ -23,7 +23,9 @@ export default function CustomCursor() {
     const onMove = (e) => {
       mouse.current = { x: e.clientX, y: e.clientY };
       if (dotRef.current) {
-        dotRef.current.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+        // Offset by half of dot size (4px = 8px/2) to center it on cursor
+        dotRef.current.style.left = `${e.clientX}px`;
+        dotRef.current.style.top = `${e.clientY}px`;
       }
       setVisible(true);
     };
@@ -34,7 +36,9 @@ export default function CustomCursor() {
       if (ringRef.current) {
         ring.current.x += (mouse.current.x - ring.current.x) * 0.12;
         ring.current.y += (mouse.current.y - ring.current.y) * 0.12;
-        ringRef.current.style.transform = `translate(${ring.current.x}px, ${ring.current.y}px)`;
+        // Offset by half of ring size (18px = 36px/2) to center it on cursor
+        ringRef.current.style.left = `${ring.current.x}px`;
+        ringRef.current.style.top = `${ring.current.y}px`;
       }
       rafId.current = requestAnimationFrame(animate);
     };
@@ -96,12 +100,12 @@ export default function CustomCursor() {
       <div
         ref={dotRef}
         className="cursor-dot"
-        style={{ position: "fixed", willChange: "transform" }}
+        style={{ willChange: "left, top" }}
       />
       <div
         ref={ringRef}
         className="cursor-ring"
-        style={{ position: "fixed", willChange: "transform" }}
+        style={{ willChange: "left, top" }}
       />
     </div>
   );
