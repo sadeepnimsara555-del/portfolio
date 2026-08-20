@@ -162,7 +162,8 @@ export default function Hero() {
           <a
             id="hero-download-cv"
             href={personalInfo.cvUrl}
-            download
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center gap-2 px-7 py-3 rounded-xl text-slate-300 font-semibold text-sm border border-slate-600/50 bg-slate-800/40 hover:bg-slate-700/50 hover:text-white transition-all duration-200 cursor-none"
           >
             <Download size={16} /> Download CV
@@ -183,7 +184,13 @@ export default function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={label}
-              className="group w-10 h-10 rounded-full flex items-center justify-center border border-slate-700/60 bg-slate-800/40 hover:border-indigo-500/60 hover:bg-indigo-500/10 transition-all duration-200 cursor-none"
+              title={label === "Email" ? `Email: ${personalInfo.socials.rawEmail || "sadeepnimsara555@gmail.com"}` : label}
+              onClick={(e) => {
+                if (label === "Email") {
+                  navigator.clipboard.writeText(personalInfo.socials.rawEmail || "sadeepnimsara555@gmail.com");
+                }
+              }}
+              className="group relative w-10 h-10 rounded-full flex items-center justify-center border border-slate-700/60 bg-slate-800/40 hover:border-indigo-500/60 hover:bg-indigo-500/10 transition-all duration-200 cursor-none"
             >
               <Icon size={18} className="text-slate-400 group-hover:text-indigo-400 transition-colors" />
             </a>

@@ -32,6 +32,12 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={label}
+              title={label === "Email" ? `Email: ${personalInfo.socials.rawEmail || "sadeepnimsara555@gmail.com"}` : label}
+              onClick={(e) => {
+                if (label === "Email") {
+                  navigator.clipboard.writeText(personalInfo.socials.rawEmail || "sadeepnimsara555@gmail.com");
+                }
+              }}
               className="w-9 h-9 rounded-full flex items-center justify-center border border-slate-700/50 bg-slate-800/30 hover:border-indigo-500/50 hover:bg-indigo-500/10 transition-all duration-200 cursor-none"
             >
               <Icon size={15} className="text-slate-400 hover:text-indigo-400 transition-colors" />

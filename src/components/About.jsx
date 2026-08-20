@@ -1,6 +1,10 @@
+import { Suspense, lazy } from "react";
 import { motion } from "framer-motion";
 import { MapPin, Cpu, Code2, Smartphone } from "lucide-react";
 import { personalInfo } from "../data/data";
+
+// Lazy-load the 3D profile frame canvas
+const ProfileFrame3D = lazy(() => import("./ProfileFrame3D"));
 
 const HIGHLIGHTS = [
   { icon: Cpu, label: "AI & Machine Learning", desc: "Python, TensorFlow, Scikit-learn, NLP" },
@@ -41,25 +45,59 @@ export default function About() {
           <div className="section-divider mx-auto" />
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-14 items-center">
-          {/* Left — text */}
+        <div className="grid md:grid-cols-3 gap-12 items-center">
+          {/* Left — 3D Profile Model Frame */}
           <motion.div
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
             custom={0}
             viewport={{ once: true, margin: "-80px" }}
+            className="flex flex-col items-center justify-center relative"
           >
-            <p className="text-slate-300 text-base leading-8 mb-6">
-              {personalInfo.intro}
-            </p>
-            <div className="flex items-center gap-2 text-slate-400 text-sm">
-              <MapPin size={16} className="text-indigo-400" />
-              <span>{personalInfo.location}</span>
+            <div className="relative flex items-center justify-center">
+              <Suspense
+                fallback={
+                  <div className="w-[300px] h-[300px] flex items-center justify-center relative">
+                    <div className="w-56 h-56 rounded-full p-1 bg-gradient-to-br from-blue-500 via-indigo-500 to-violet-600 animate-pulse">
+                      <img
+                        src="/profile.jpg"
+                        alt={personalInfo.name}
+                        className="w-full h-full rounded-full object-cover"
+                      />
+                    </div>
+                  </div>
+                }
+              >
+                <ProfileFrame3D />
+              </Suspense>
+
+              {/* Floating location badge */}
+              <motion.div
+                animate={{ y: [0, -5, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-navy-800/90 border border-indigo-500/30 backdrop-blur-md shadow-lg shadow-indigo-500/20 whitespace-nowrap z-20"
+              >
+                <MapPin size={12} className="text-indigo-400" />
+                <span className="text-slate-300 text-xs font-medium">{personalInfo.location}</span>
+              </motion.div>
             </div>
           </motion.div>
 
-          {/* Right — highlight cards */}
+          {/* Middle — Bio text */}
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            custom={1}
+            viewport={{ once: true, margin: "-80px" }}
+          >
+            <p className="text-slate-300 text-base leading-8">
+              {personalInfo.intro}
+            </p>
+          </motion.div>
+
+          {/* Right — Highlight cards */}
           <div className="flex flex-col gap-4">
             {HIGHLIGHTS.map(({ icon: Icon, label, desc }, i) => (
               <motion.div
@@ -67,7 +105,7 @@ export default function About() {
                 variants={fadeUp}
                 initial="hidden"
                 whileInView="visible"
-                custom={i + 1}
+                custom={i + 2}
                 viewport={{ once: true, margin: "-80px" }}
                 className="glass-card rounded-2xl p-5 flex items-start gap-4"
               >

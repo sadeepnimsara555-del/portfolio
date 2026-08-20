@@ -17,9 +17,10 @@ Seeking an internship to leverage technical expertise in Software Engineering an
   socials: {
     github: "https://github.com/sadeepnimsara555-del",
     linkedin: "https://www.linkedin.com/in/sadeep-nimsara-godage-2101b53a9/",
-    email: "mailto:sadeepportfolio@gmail.com",
+    email: "mailto:sadeepnimsara555@gmail.com",
+    rawEmail: "sadeepnimsara555@gmail.com",
   },
-  cvUrl: "/cv.pdf", // 👈 Drop your CV as public/cv.pdf
+  cvUrl: "https://mysliit-my.sharepoint.com/:b:/g/personal/it24102990_my_sliit_lk/IQA1wcrcRgCRR55lzWFoMN8SAbxXFkyivHcQOs2aEUJ__Xc?e=bHKuB1",
 };
 
 export const skills = [

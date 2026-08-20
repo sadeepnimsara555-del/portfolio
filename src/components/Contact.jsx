@@ -107,20 +107,47 @@ export default function Contact() {
             </div>
 
             <div className="flex flex-col gap-3">
-              {SOCIALS.map(({ href, Icon, label }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-slate-400 hover:text-indigo-400 transition-colors text-sm group cursor-none"
-                >
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center border border-slate-700/60 bg-slate-800/40 group-hover:border-indigo-500/50 group-hover:bg-indigo-500/10 transition-all">
-                    <Icon size={17} />
-                  </div>
-                  {label}
-                </a>
-              ))}
+              <a
+                href={personalInfo.socials.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 text-slate-400 hover:text-indigo-400 transition-colors text-sm group cursor-none"
+              >
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center border border-slate-700/60 bg-slate-800/40 group-hover:border-indigo-500/50 group-hover:bg-indigo-500/10 transition-all">
+                  <FaGithub size={17} />
+                </div>
+                <span>GitHub</span>
+              </a>
+
+              <a
+                href={personalInfo.socials.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 text-slate-400 hover:text-indigo-400 transition-colors text-sm group cursor-none"
+              >
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center border border-slate-700/60 bg-slate-800/40 group-hover:border-indigo-500/50 group-hover:bg-indigo-500/10 transition-all">
+                  <FaLinkedin size={17} />
+                </div>
+                <span>LinkedIn</span>
+              </a>
+
+              {/* Personal Email with Direct Click & Copy */}
+              <a
+                href={`mailto:${personalInfo.socials.rawEmail || "sadeepnimsara555@gmail.com"}`}
+                onClick={(e) => {
+                  navigator.clipboard.writeText(personalInfo.socials.rawEmail || "sadeepnimsara555@gmail.com");
+                }}
+                title="Click to copy & email"
+                className="flex items-center gap-3 text-slate-400 hover:text-indigo-400 transition-colors text-sm group cursor-none"
+              >
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center border border-slate-700/60 bg-slate-800/40 group-hover:border-indigo-500/50 group-hover:bg-indigo-500/10 transition-all">
+                  <Mail size={17} />
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-white text-xs font-semibold">Email</span>
+                  <span className="text-indigo-400 text-xs font-mono">{personalInfo.socials.rawEmail || "sadeepnimsara555@gmail.com"}</span>
+                </div>
+              </a>
             </div>
           </motion.div>
 
