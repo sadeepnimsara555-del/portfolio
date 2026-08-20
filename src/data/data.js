@@ -53,6 +53,19 @@ export const skills = [
 export const projects = [
   {
     id: 1,
+    title: "BlackEagleLK – Movie Discovery & Streaming-Style Web Application",
+    dates: "Apr 2026",
+    tech: ["React", "Vite", "React Router", "Tailwind CSS", "TMDB API"],
+    bullets: [
+      "Modern movie discovery and streaming-style platform with a responsive dark-themed interface for browsing, searching, and exploring movies via the TMDB API",
+      "Dynamic content retrieval for popular, trending, top-rated, genre-based, and language-specific movies with route-based navigation for details, cast, and recommendations",
+      "Sinhala subtitle support and an integrated smart chatbot for movie and subtitle queries, improving user accessibility and interaction",
+    ],
+    github: "https://github.com/sadeepnimsara555-del/BlackEagleLK",
+    liveUrl: "https://blackeaglelkmovie.vercel.app/",
+  },
+  {
+    id: 2,
     title: "Web-Based Retail Hospital Store Management System with Intelligent Analytics",
     dates: "Feb 2026 – Apr 2026",
     tech: ["React", "Node.js", "Express.js", "Supabase", "PostgreSQL", "Python", "Scikit-learn", "JWT"],
@@ -61,10 +74,10 @@ export const projects = [
       "AI-powered forecasting service (Python + Scikit-learn) for sales predictions and trend analysis",
       "RESTful API for POS operations, customer loyalty management, and automated invoicing",
     ],
-    github: "https://github.com/sadeepnimsara555-del",
+    github: "https://github.com/IT24102990/Hospital-management",
   },
   {
-    id: 2,
+    id: 3,
     title: "Staff Management System",
     dates: "Jul 2025 – Sep 2025",
     tech: ["Java", "Spring Boot", "MySQL", "Hibernate", "Maven", "JavaScript", "Bootstrap"],
@@ -73,10 +86,10 @@ export const projects = [
       "Secure multi-role authentication (Admins, Customers, Staff)",
       "Optimized MySQL schema via Hibernate for complex entity relationships",
     ],
-    github: "https://github.com/sadeepnimsara555-del",
+    github: "https://github.com/sadeepnimsara555-del/Staff-Management-",
   },
   {
-    id: 3,
+    id: 4,
     title: "Heart Failure Prediction",
     dates: "Jul 2025 – Sep 2025",
     tech: ["Python", "TensorFlow", "Pandas", "NLTK", "TF-IDF", "PCA", "SVM", "Scikit-learn", "Matplotlib"],
@@ -85,20 +98,32 @@ export const projects = [
       "TF-IDF vectorization + PCA for dimensionality reduction",
       "Compared KNN, Logistic Regression, Random Forest, XGBoost, SVM, and a Neural Network (MLPClassifier) using Accuracy, Precision, Recall, F1-score, ROC-AUC",
     ],
-    github: "https://github.com/sadeepnimsara555-del",
+    github: "https://github.com/sadeepnimsara555-del/Heart-Failure-Prediction",
   },
   {
-    id: 4,
+    id: 5,
     title: "Online Bakery Store Management System",
     dates: "Feb 2025 – Apr 2025",
     tech: ["Java", "Spring Boot", "IntelliJ IDEA", "HTML", "CSS", "JavaScript"],
     bullets: [
-      "Web app applying OOP principles to manage products, users, and transactions",
-      "CRUD operations, file handling, custom data structures (Linked Lists)",
+      "Developed a web-based bakery store application using Java, applying OOP principles to manage products, users, and transactions",
+      "Implemented CRUD operations, file handling mechanisms, and custom data structures (Linked Lists) for efficient data storage and management",
     ],
-    github: "https://github.com/sadeepnimsara555-del",
+    github: "https://github.com/sadeepnimsara555-del/Online-Backery-Store",
+  },
+  {
+    id: 6,
+    title: "Home Automation System",
+    dates: "Jul 2024 – Sep 2024",
+    tech: ["Arduino", "Embedded C", "Bluetooth (HC-05)", "Mobile Application", "Arduino IDE"],
+    bullets: [
+      "Developed an Arduino-based home automation system to control lighting and electrical appliances through a mobile application using Bluetooth connectivity",
+      "Implemented real-time control functionality to enhance user convenience, improve energy efficiency, and support smart home operations",
+    ],
+    github: "https://github.com/sadeepnimsara555-del/Auto-Mate-Home-System",
   },
 ];
+
 
 export const education = [
   {

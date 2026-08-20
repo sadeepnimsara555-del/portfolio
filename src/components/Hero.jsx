@@ -45,7 +45,13 @@ function RotatingText() {
   }, [displayed, typing, index]);
 
   return (
-    <span className="gradient-text font-heading font-bold text-2xl md:text-3xl">
+    <span
+      className="font-heading font-bold text-2xl md:text-3xl"
+      style={{
+        color: "#ffffff",
+        textShadow: "0 0 20px rgba(99,102,241,0.8), 0 0 40px rgba(139,92,246,0.4)",
+      }}
+    >
       {displayed}
       <span className="animate-pulse text-indigo-400">|</span>
     </span>
@@ -110,11 +116,9 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.7, delay: 0.3 }}
-          className="mb-6 h-12 flex items-center justify-center"
+          className="mb-6 h-10 flex items-center justify-center"
         >
-          <span className="inline-flex items-center px-5 py-2 rounded-full border border-indigo-500/40 bg-indigo-500/10 backdrop-blur-md shadow-lg shadow-indigo-500/10">
-            <RotatingText />
-          </span>
+          <RotatingText />
         </motion.div>
 
         {/* Tagline */}
