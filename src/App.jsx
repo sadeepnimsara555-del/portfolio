@@ -6,7 +6,6 @@ import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 import Education from "./components/Education";
 import Certifications from "./components/Certifications";
-import Leadership from "./components/Leadership";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import CustomCursor from "./components/CustomCursor";
@@ -23,7 +22,6 @@ function App() {
         <Projects />
         <Education />
         <Certifications />
-        <Leadership />
         <Contact />
       </main>
       <Footer />

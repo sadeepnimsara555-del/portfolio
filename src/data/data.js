@@ -16,8 +16,8 @@ Proven ability to integrate intelligent components into scalable software.
 Seeking an internship to leverage technical expertise in Software Engineering and AI/ML.`,
   socials: {
     github: "https://github.com/sadeepnimsara555-del",
-    linkedin: "https://www.linkedin.com/in/sadeepnimsara-godage-2101b53a9/",
-    email: "mailto:your-email@example.com", // 👈 Replace with your email
+    linkedin: "https://www.linkedin.com/in/sadeep-nimsara-godage-2101b53a9/",
+    email: "mailto:sadeepportfolio@gmail.com",
   },
   cvUrl: "/cv.pdf", // 👈 Drop your CV as public/cv.pdf
 };
@@ -151,21 +151,3 @@ export const certifications = [
   },
 ];
 
-export const leadership = [
-  {
-    id: 1,
-    role: "Head Prefect",
-    institution: "Future for Children College",
-    dates: "2018",
-    description:
-      "Led the prefect team, coordinated student-related activities and events, and represented the student body to school management.",
-  },
-  {
-    id: 2,
-    role: "Junior Prefect",
-    institution: "Future for Children College",
-    dates: "2015 – 2017",
-    description:
-      "Maintained discipline, supported school activities and student management across multiple academic years.",
-  },
-];
