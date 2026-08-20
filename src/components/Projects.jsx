@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Calendar, ArrowUpRight } from "lucide-react";
+import { Calendar, ArrowUpRight, ExternalLink } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 import { projects } from "../data/data";
 
@@ -45,15 +45,26 @@ export default function Projects() {
           viewport={{ once: true, margin: "-60px" }}
           className="grid md:grid-cols-2 gap-8"
         >
-          {projects.map((project) => (
+          {projects.map((project, idx) => (
             <motion.article
               key={project.id}
               variants={cardVariants}
-              className="glass-card rounded-2xl p-7 flex flex-col h-full group"
+              className={`glass-card rounded-2xl p-7 flex flex-col h-full group relative overflow-hidden ${
+                idx === 0
+                  ? "border border-indigo-500/40 shadow-[0_0_30px_rgba(99,102,241,0.15)]"
+                  : ""
+              }`}
             >
+              {/* Latest badge for first project */}
+              {idx === 0 && (
+                <span className="absolute top-4 right-4 text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/40">
+                  Latest
+                </span>
+              )}
+
               {/* Top row */}
               <div className="flex items-start justify-between gap-4 mb-4">
-                <div>
+                <div className="flex-1 pr-2">
                   <h3 className="font-heading font-semibold text-white text-base leading-snug mb-1 group-hover:gradient-text transition-all">
                     {project.title}
                   </h3>
@@ -63,16 +74,31 @@ export default function Projects() {
                   </div>
                 </div>
 
-                {/* GitHub Link */}
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`GitHub — ${project.title}`}
-                  className="shrink-0 w-9 h-9 rounded-xl flex items-center justify-center border border-slate-700/60 bg-slate-800/40 hover:border-indigo-500/50 hover:bg-indigo-500/10 transition-all duration-200 cursor-none"
-                >
-                  <FaGithub size={16} className="text-slate-400 hover:text-indigo-400 transition-colors" />
-                </a>
+                {/* Action buttons */}
+                <div className="shrink-0 flex items-center gap-2">
+                  {project.liveUrl && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Live Demo — ${project.title}`}
+                      title="Live Demo"
+                      className="w-9 h-9 rounded-xl flex items-center justify-center border border-indigo-500/50 bg-indigo-500/10 hover:border-indigo-400 hover:bg-indigo-500/20 transition-all duration-200 cursor-none"
+                    >
+                      <ExternalLink size={15} className="text-indigo-400" />
+                    </a>
+                  )}
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`GitHub — ${project.title}`}
+                    title="View on GitHub"
+                    className="w-9 h-9 rounded-xl flex items-center justify-center border border-slate-700/60 bg-slate-800/40 hover:border-indigo-500/50 hover:bg-indigo-500/10 transition-all duration-200 cursor-none"
+                  >
+                    <FaGithub size={16} className="text-slate-400 hover:text-indigo-400 transition-colors" />
+                  </a>
+                </div>
               </div>
 
               {/* Bullets */}
@@ -118,3 +144,4 @@ export default function Projects() {
     </section>
   );
 }
+
