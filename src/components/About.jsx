@@ -1,10 +1,7 @@
-import { Suspense, lazy } from "react";
 import { motion } from "framer-motion";
-import { MapPin, Cpu, Code2, Smartphone } from "lucide-react";
+import { Cpu, Code2, Smartphone } from "lucide-react";
 import { personalInfo } from "../data/data";
-
-// Lazy-load the 3D profile frame canvas
-const ProfileFrame3D = lazy(() => import("./ProfileFrame3D"));
+import ProfileFrame3D from "./ProfileFrame3D";
 
 const HIGHLIGHTS = [
   { icon: Cpu, label: "AI & Machine Learning", desc: "Python, TensorFlow, Scikit-learn, NLP" },
@@ -46,42 +43,16 @@ export default function About() {
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-12 items-center">
-          {/* Left — 3D Profile Model Frame */}
+          {/* Left — 3D Round Profile Frame */}
           <motion.div
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
             custom={0}
             viewport={{ once: true, margin: "-80px" }}
-            className="flex flex-col items-center justify-center relative"
+            className="flex items-center justify-center"
           >
-            <div className="relative flex items-center justify-center">
-              <Suspense
-                fallback={
-                  <div className="w-[300px] h-[300px] flex items-center justify-center relative">
-                    <div className="w-56 h-56 rounded-full p-1 bg-gradient-to-br from-blue-500 via-indigo-500 to-violet-600 animate-pulse">
-                      <img
-                        src="/profile.jpg"
-                        alt={personalInfo.name}
-                        className="w-full h-full rounded-full object-cover"
-                      />
-                    </div>
-                  </div>
-                }
-              >
-                <ProfileFrame3D />
-              </Suspense>
-
-              {/* Floating location badge */}
-              <motion.div
-                animate={{ y: [0, -5, 0] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-navy-800/90 border border-indigo-500/30 backdrop-blur-md shadow-lg shadow-indigo-500/20 whitespace-nowrap z-20"
-              >
-                <MapPin size={12} className="text-indigo-400" />
-                <span className="text-slate-300 text-xs font-medium">{personalInfo.location}</span>
-              </motion.div>
-            </div>
+            <ProfileFrame3D />
           </motion.div>
 
           {/* Middle — Bio text */}
